@@ -1,0 +1,155 @@
+{
+  "generated_at": "2026-11-05T04:33:52+00:00",
+  "legs": {
+    "legacy": {
+      "note": "Historical record including accumulated smoke-test data \u2014 context only, never netted into the invariant.",
+      "per_identity_cents_top": {
+        "0x1111111111111111111111111111111111111111": 1107500,
+        "0x14e0d23a8af50b2cf04ecedf389608378bba3ccf": 1900,
+        "0x1711848a297a13fd3eb27859471ec970137085b7": 1900,
+        "0x5c71237a37aa74f3a266a251e144f4e920298106": 1900,
+        "0x7610ca77d1c7c26b17414b151ec28a4f9deb1070": 1900,
+        "0x79206cb9f314b1fe87ddd0d432ccae5d7d3c0efd": 1900,
+        "0xbf9fa6e2b3f29cb6a54ea8ee083d052de6b63777": 1900,
+        "creator-wallet": 159300,
+        "victory-escrow-vault": 756000,
+        "victory-music-treasury": 23600
+      },
+      "settled_events": 1519,
+      "total_cents": 2158500
+    },
+    "native": {
+      "per_identity_cents": {
+        "unknown": 1200
+      },
+      "settled_events": 1,
+      "total_cents": 1200
+    }
+  },
+  "notes": [
+    "Positive ledger_vs_chain drift = pending mint queue (harmless, resolves next cycle).",
+    "Negative ledger_vs_chain drift = minted beyond backing \u2014 ALERT, halt settlement.",
+    "Nonzero native_vs_ledger drift = the two ledgers have diverged \u2014 investigate before settlement continues.",
+    "On-chain leg skipped when VICTORY_WVUSD_CONTRACT is unset (chain_supply reads 0)."
+  ],
+  "reconcile": {
+    "chain_ok": true,
+    "invariant": "every native settled vUSD cent has a matching hash-chained ledger credit (keyed by settlement_id); ledger_total == chain_supply + pending_mint_out",
+    "ledger_chain_ok": false,
+    "ledger_chain_violations": [
+      {
+        "seq": 1,
+        "stored": "657738336fbf26a6",
+        "violation": "hash_mismatch"
+      },
+      {
+        "seq": 2,
+        "stored": "6f1f33a94ba6b211",
+        "violation": "hash_mismatch"
+      },
+      {
+        "seq": 3,
+        "stored": "f2e132e481da3312",
+        "violation": "hash_mismatch"
+      },
+      {
+        "seq": 4,
+        "stored": "57a612971cebb878",
+        "violation": "hash_mismatch"
+      },
+      {
+        "seq": 5,
+        "stored": "ce67c84fa10d7458",
+        "violation": "hash_mismatch"
+      },
+      {
+        "seq": 6,
+        "stored": "c962cd7b316db57e",
+        "violation": "hash_mismatch"
+      },
+      {
+        "seq": 7,
+        "stored": "c9a37c4f430afa72",
+        "violation": "hash_mismatch"
+      },
+      {
+        "seq": 8,
+        "stored": "8e3bb1f357800337",
+        "violation": "hash_mismatch"
+      },
+      {
+        "seq": 9,
+        "stored": "8a971282e64e6096",
+        "violation": "hash_mismatch"
+      },
+      {
+        "seq": 10,
+        "stored": "3bfdfe6bfdb97cf7",
+        "violation": "hash_mismatch"
+      }
+    ],
+    "ledger_vs_chain_drift_units": 0,
+    "mirrored_settlements": 2,
+    "native_mirror_ok": true,
+    "native_settled_events": 1,
+    "ok": true,
+    "pending_mint_out_units": 0,
+    "queue_chain_ok": true,
+    "queue_chain_violations": [],
+    "unexplained_drift_units": 0,
+    "unmatched_native": []
+  },
+  "sources": {
+    "native_pay": {
+      "backend": "local-json",
+      "exists": true,
+      "legacy": {
+        "backend": "legacy-local-json",
+        "exists": true,
+        "note": "Accumulated historical record including smoke-test junk \u2014 reported as a separate leg, never netted against the native leg or the cleaned vUSD ledger.",
+        "settled_events": 1519,
+        "state_path": "/Users/nicholaskramer/victorychain_stack_launchd/apps/victory_pay/runtime/victory-pay-state.json",
+        "total_cents": 2158500
+      },
+      "state_path": "/Users/nicholaskramer/victorychain_stack_launchd/apps/victory_pay/runtime/victory-pay-native-state.json"
+    },
+    "vusd_ledger": {
+      "exists": true,
+      "path": "/Users/nicholaskramer/victorychain_stack_launchd/apps/victory_pay/runtime/vusd_ledger.json"
+    },
+    "wvusd_chain": {
+      "configured": true,
+      "contract": "0x039ebeaa381ecc17ad926f9138426da8e04bf53b",
+      "rpc": "https://sepolia.base.org"
+    }
+  },
+  "suite": "vusd_reconciliation",
+  "version": 1,
+  "vusd_ledger": {
+    "balances_cents": {
+      "cosmos1citizenlive0002": 0,
+      "test-user-1": 0,
+      "vid_b9b780dbcf7179f4ca6614337a141af2": 0,
+      "wallet:0x1c54109f975fe57DCb25574e2860357d1AF279Bf": 1800
+    },
+    "entries": 12,
+    "head_hash": "c95caad0a0494398c951e1082d0a803033ac043858a772c72547f88b4301dcdc",
+    "total_cents": 1800
+  },
+  "wvusd_chain": {
+    "total_supply_units": 1800
+  },
+  "wvusd_mint_queue": {
+    "exists": true,
+    "path": "/Users/nicholaskramer/victorychain_stack_launchd/apps/victory_pay/runtime/wvusd_mint_queue.jsonl",
+    "pending_units": 0,
+    "queue_chain_ok": true,
+    "queue_chain_violations": [],
+    "statuses": {
+      "failed": 1,
+      "submitted": 6,
+      "voided": 2
+    },
+    "submitted_units": 4600
+  }
+}
